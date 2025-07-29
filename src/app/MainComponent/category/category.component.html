@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <div *ngIf="CategoryList.length > 0">
+    <div class="row">
+    
+      <div class="col-md-4 mb-4" *ngFor="let cat of CategoryList">
+        <div class="card h-100">
+          <img [src]="cat.image" class="card-img-top" alt="{{ cat.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ cat.name }}</h5>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+    <div *ngIf="CategoryList.length === 0" class="alert alert-warning">
+      No Category found.
+   
+    </div>
+  </div>
+  

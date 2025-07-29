@@ -1,0 +1,13 @@
+<ngb-carousel *ngIf="images">
+    <ng-template ngbSlide *ngFor="let img of images; let i = index">
+      <img [src]="img" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Slide {{ i + 1 }}">
+      <div class="carousel-caption">
+        <h5>Slide {{ i + 1 }}</h5>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+  <!-- Category grid -->
+<app-category></app-category>
+  <!-- product grid -->
+  <app-product></app-product>  
