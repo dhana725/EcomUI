@@ -12,5 +12,8 @@ export class CategoryService {
   GetCategoryAsync(){
    return this.http.get(`${this.baseUrl+'Category'}`);
   }
+  uploadCategoryAsync(data:any){
+    return this.http.post(`${this.baseUrl+'Category'}`,data);
+  }
   
 }

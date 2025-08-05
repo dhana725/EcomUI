@@ -1,0 +1,70 @@
+<div >
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
+
+        <div class="form-group">
+            <label>product Name</label>
+            <input type="text" class="form-control" formControlName="productName" placeholder="Enter product Name">
+            <div *ngIf="productForm.get('productName')?.invalid && productForm.get('productName')?.touched">
+                Please Enter product Name
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>product Name</label>
+            <input type="number" class="form-control" formControlName="productPrice" placeholder="Enter product Price">
+            <div *ngIf="productForm.get('productPrice')?.invalid && productForm.get('productPrice')?.touched">
+                Please Enter product Price
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            <label>Select Category</label>
+            <select formControlName="categoryId" class="form-select" aria-label="Default select example">
+                <option selected>Select Category</option>
+                <option value="{{item.categoryId}}" *ngFor="let item of categoryList">{{item.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="formFile" class="form-label">product Image</label>
+            <input (change)="onFileSelected($event)" class="form-control" formControlName="productImage" type="file"
+                id="formFile">
+            <div *ngIf="productForm.get('productImage')?.invalid && productForm.get('productImage')?.touched">
+                Please Upload product Image
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label for="formFile" class="form-label">product Sub Image</label>
+                <input type="file" class="form-control" (change)="onFileChange($event)" />
+        
+            </div>
+            <div class="form-group">
+                <label>Image Order</label>
+                <input type="number" class="form-control" #myInput placeholder="Select Order">
+            </div>
+        
+            <button type="button" (click)="add(myInput.value)" class="btn btn-primary mt-2">Add</button>
+        </div>
+        <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary mt-2">Submit</button>
+    </form>
+</div>
+<!--  -->
+
+   
+   
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Order</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of selectedProductImage; let i = index">
+            <th scope="row">{{data.img[0].name}}</th>
+            <td>{{data.imgOrder}}</td>
+
+        </tr>
+
+    </tbody>
+</table>

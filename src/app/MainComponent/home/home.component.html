@@ -1,4 +1,17 @@
-<ngb-carousel *ngIf="images">
+
+
+
+
+<app-navbar></app-navbar>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="Col-md-4">
+<app-sidebar></app-sidebar>
+    </div>
+    <div class="Col-md-8">
+      <div class="MainClass">     
+       <ngb-carousel *ngIf="images">
     <ng-template ngbSlide *ngFor="let img of images; let i = index">
       <img [src]="img" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Slide {{ i + 1 }}">
       <div class="carousel-caption">
@@ -11,3 +24,7 @@
 <app-category></app-category>
   <!-- product grid -->
   <app-product></app-product>  
+        </div>
+    </div>
+  </div>
+</div>

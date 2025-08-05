@@ -1,0 +1,22 @@
+
+<div class="d-flex justify-content-center align-items-center ">
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
+
+    <div class="form-group">
+      <label >Category Name</label>
+      <input type="text" class="form-control" formControlName="categoryName" placeholder="Enter Category Name">
+      <div *ngIf="categoryForm.get('categoryName')?.invalid && categoryForm.get('categoryName')?.touched">
+        Please Enter Category Name
+      </div>
+    </div>
+  
+    <div class="form-group">
+            <label for="formFile" class="form-label">Category Image</label>
+            <input  (change)="onFileSelected($event)" class="form-control" formControlName="categoryImage" type="file" id="formFile">
+            <div *ngIf="categoryForm.get('categoryImage')?.invalid && categoryForm.get('categoryImage')?.touched">
+                Please Upload Category Image
+              </div>
+    </div>
+    <button type="submit" [disabled]="categoryForm.invalid" class="btn btn-primary mt-2">Submit</button>
+  </form>
+</div>
