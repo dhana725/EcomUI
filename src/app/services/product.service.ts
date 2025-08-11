@@ -13,4 +13,7 @@ export class ProductService {
     const headers = new HttpHeaders(); 
     return this.http.post(`${this.baseUrl+'Product'}`,data,{ headers });
   }
+  getProductAsync(){
+    return this.http.get(`${this.baseUrl+'Product'}`);
+  }
 }

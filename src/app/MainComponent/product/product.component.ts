@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -8,24 +9,24 @@ import { Component } from '@angular/core';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-  products = [
-    {
-      id: 1,
-      name: 'Smartphone',
-      price: 19999,
-      image: 'assets/images/phone.jpg'
-    },
-    {
-      id: 2,
-      name: 'Headphones',
-      price: 2999,
-      image: 'assets/images/headphones.jpg'
-    },
-    {
-      id: 3,
-      name: 'Smartwatch',
-      price: 5999,
-      image: 'assets/images/watch.jpg'
-    }
-  ];
+  constructor(public pservice:ProductService){}
+  products:any=[];
+error:any;
+
+    
+
+
+ngOnInit(){
+  this.getProductList();
+}
+
+getProductList(){
+  this.pservice.getProductAsync().subscribe({next:(data)=>{
+    this.products=data
+    console.log(this.products)
+  },error:(err)=>{
+    this.error = err.message;
+    console.log(this.error);
+  }})
+}
 }
